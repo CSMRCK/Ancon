@@ -11,17 +11,12 @@ namespace Ancon
     {
         public static bool IsRunning { private set; get; }
 
-        //public static Server(string pathToAdb = "D:\\Soft\\ABD\\adb.exe")
-        //{
-        //    Start(pathToAdb);
-        //}
-
-        public static void Start(string pathToAdb = "D:\\Soft\\ABD\\adb.exe")
+        public static void Start()
         {
             if (!AdbServer.Instance.GetStatus().IsRunning)
             {
                 AdbServer server = new AdbServer();
-                StartServerResult result = server.StartServer(pathToAdb, false);
+                StartServerResult result = server.StartServer("", false);
                 IsRunning = (result == StartServerResult.Started);
             }
         }
